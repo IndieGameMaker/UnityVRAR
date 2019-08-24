@@ -21,4 +21,17 @@ public class MoveWayPoint : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        //다음 웨이포인트를 향한 벡터 계산
+        Vector3 dir = points[nextIdx].position - tr.position;
+        //벡터의 각도(Quaternion 타입으로 산출)
+        Quaternion rot = Quaternion.LookRotation(dir);
+        //부드럽게 회전 - 보간함수
+        tr.rotation = Quaternion.Slerp(tr.rotation, rot, Time.deltaTime * damping);
+
+        //이동처리
+        tr.Translate(Vector3.forward * Time.deltaTime * speed);
+    }
+
 }
