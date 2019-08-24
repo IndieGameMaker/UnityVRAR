@@ -15,6 +15,9 @@ public class EyeCast : MonoBehaviour
     private GameObject currButton;
     private GameObject prevButton;
 
+    public float selectedTime = 1.0f;
+    private float passedTime  = 0.0f;
+
     void Start()
     {
         camTr = GetComponent<Transform>(); 
@@ -62,6 +65,12 @@ public class EyeCast : MonoBehaviour
 
     void ReleaseButton()
     {
-
+        PointerEventData data = new PointerEventData(EventSystem.current);
+        
+        if (prevButton != null)
+        {
+            ExecuteEvents.Execute(prevButton, data, ExecuteEvents.pointerExitHandler);
+            prevButton = null;
+        }
     }
 }
