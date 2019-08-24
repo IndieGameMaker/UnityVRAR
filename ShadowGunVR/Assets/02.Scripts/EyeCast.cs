@@ -63,7 +63,7 @@ public class EyeCast : MonoBehaviour
                 {
                     prevButton.GetComponentsInChildren<Image>()[1].fillAmount = 0.0f;
                 }
-                
+
                 //현재 버튼에 PointerEnter Event
                 ExecuteEvents.Execute(currButton, data, ExecuteEvents.pointerEnterHandler);
                 //이전 버튼에 PointerExit Event
