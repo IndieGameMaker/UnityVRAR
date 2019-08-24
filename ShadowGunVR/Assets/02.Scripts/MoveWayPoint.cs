@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class MoveWayPoint : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private Transform tr;
+    public float speed = 1.5f;
+    public float damping = 1.0f;
+    //웨이포인트를 저장할 배열
+    public Transform[] points;
+    public int nextIdx = 1;
+
     void Start()
     {
-        
+        tr = GetComponent<Transform>();
+        GameObject wayPointGroupObj = GameObject.Find("WayPointGroup");
+        if (wayPointGroupObj != null)
+        {
+            points = wayPointGroupObj.GetComponentsInChildren<Transform>();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
