@@ -8,6 +8,8 @@ public class MoveLookAt : MonoBehaviour
     private Transform camTr;
     public float speed = 1.0f;
 
+    public static bool isStopped = false;
+
     void Start()
     {
         cc = GetComponent<CharacterController>();
@@ -16,6 +18,8 @@ public class MoveLookAt : MonoBehaviour
 
     void Update()
     {
+        if (isStopped) return;
+        
         cc.SimpleMove(camTr.forward * speed);
     }
 }
