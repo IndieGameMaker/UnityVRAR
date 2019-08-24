@@ -7,7 +7,7 @@ public class ItemBox : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public void OnLookAt(bool isLooked)
     {
-        //MoveLookAt.isStopped = isLooked;
+        MoveLookAt.isStopped = isLooked;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
