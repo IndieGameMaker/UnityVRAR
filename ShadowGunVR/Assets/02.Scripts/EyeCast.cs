@@ -18,6 +18,7 @@ public class EyeCast : MonoBehaviour
     public float selectedTime = 1.0f;
     private float passedTime  = 0.0f;
     private Image circleBar;
+    private bool isClicked = false;
 
     void Start()
     {
@@ -59,6 +60,7 @@ public class EyeCast : MonoBehaviour
             {
                 //CircleBar 초기화
                 passedTime = 0.0f;
+                isClicked = false;
                 if (prevButton != null)
                 {
                     prevButton.GetComponentsInChildren<Image>()[1].fillAmount = 0.0f;
@@ -70,10 +72,16 @@ public class EyeCast : MonoBehaviour
                 ExecuteEvents.Execute(prevButton, data, ExecuteEvents.pointerExitHandler);
                 prevButton = currButton;
             }
-            else
+            //계속 동일한 버튼을 응시하고 있을 경우
+            else if (isClicked == false)
             {
                 passedTime += Time.deltaTime;
                 circleBar.fillAmount = passedTime / selectedTime;
+                if (passedTime >= selectedTime)
+                {
+                    ExecuteEvents.Execute(currButton, data, ExecuteEvents.pointerClickHandler);
+                    isClicked = true;
+                }
             }
         }
     }

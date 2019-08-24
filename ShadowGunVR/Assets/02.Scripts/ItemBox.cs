@@ -19,4 +19,11 @@ public class ItemBox : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         MoveLookAt.isStopped = false;
     }
+
+    public void ButtonMsg(string msg)
+    {
+        Debug.Log(msg + " Clicked !!!");
+    }
+
+
 }
