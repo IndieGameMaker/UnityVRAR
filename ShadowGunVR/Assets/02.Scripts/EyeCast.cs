@@ -43,7 +43,21 @@ public class EyeCast : MonoBehaviour
 
     void GazeButton()
     {
-
+        PointerEventData data = new PointerEventData(EventSystem.current);
+        if (hit.collider.gameObject.layer == 9)
+        {
+            //현재 응시하고 있는 버튼 객체를 저장
+            currButton = hit.collider.gameObject;
+            //새로운 버튼을 응시한 경우
+            if (currButton != prevButton)
+            {
+                //현재 버튼에 PointerEnter Event
+                ExecuteEvents.Execute(currButton, data, ExecuteEvents.pointerEnterHandler);
+                //이전 버튼에 PointerExit Event
+                ExecuteEvents.Execute(prevButton, data, ExecuteEvents.pointerExitHandler);
+                prevButton = currButton;
+            }
+        }
     }
 
     void ReleaseButton()
