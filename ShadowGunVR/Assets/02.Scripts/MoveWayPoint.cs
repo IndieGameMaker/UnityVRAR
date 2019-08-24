@@ -34,4 +34,21 @@ public class MoveWayPoint : MonoBehaviour
         tr.Translate(Vector3.forward * Time.deltaTime * speed);
     }
 
+    void OnTriggerEnter(Collider coll)
+    {
+        if (coll.CompareTag("WAY_POINT"))
+        {
+            nextIdx = (++nextIdx >= points.Length) ? 1 : nextIdx;
+            /*
+            ++nextIdx;
+
+            if (nextIdx >= points.Length)
+            {
+                nextIdx = 1;
+            }
+            */
+
+        }
+    }
+
 }
