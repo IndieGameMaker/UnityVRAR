@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: m_fog_L_7_1
+  m_Shader: {fileID: 4800000, guid: f5998605d70bbe347a3948e114865f48, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 2800000, guid: 6883b02855adba64594237ba60f6cf40, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - first:
+        name: _Bias
+      second: 0.7
+    - first:
+        name: _BlinkingTimeOffsScale
+      second: 1
+    - first:
+        name: _FadeOutDistFar
+      second: 500
+    - first:
+        name: _FadeOutDistNear
+      second: 30
+    - first:
+        name: _MaxGrowSize
+      second: 15
+    - first:
+        name: _Multiplier
+      second: 0.5
+    - first:
+        name: _NoiseAmount
+      second: 0.20998852
+    - first:
+        name: _SizeGrowEndDist
+      second: 1
+    - first:
+        name: _SizeGrowStartDist
+      second: 1
+    - first:
+        name: _TimeOffDuration
+      second: 0.8
+    - first:
+        name: _TimeOnDuration
+      second: 2
+    m_Colors:
+    - first:
+        name: _Color
+      second: {r: 0.1065939, g: 0.3953768, b: 0.49253732, a: 1}
+--- !u!1002 &2100001
+EditorExtensionImpl:
+  serializedVersion: 6
