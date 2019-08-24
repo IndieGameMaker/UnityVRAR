@@ -17,6 +17,7 @@ public class EyeCast : MonoBehaviour
 
     public float selectedTime = 1.0f;
     private float passedTime  = 0.0f;
+    private Image circleBar;
 
     void Start()
     {
@@ -51,6 +52,8 @@ public class EyeCast : MonoBehaviour
         {
             //현재 응시하고 있는 버튼 객체를 저장
             currButton = hit.collider.gameObject;
+            circleBar  = currButton.GetComponentsInChildren<Image>()[1];
+
             //새로운 버튼을 응시한 경우
             if (currButton != prevButton)
             {
@@ -59,6 +62,11 @@ public class EyeCast : MonoBehaviour
                 //이전 버튼에 PointerExit Event
                 ExecuteEvents.Execute(prevButton, data, ExecuteEvents.pointerExitHandler);
                 prevButton = currButton;
+            }
+            else
+            {
+                passedTime += Time.deltaTime;
+                circleBar.fillAmount = passedTime / selectedTime;
             }
         }
     }
