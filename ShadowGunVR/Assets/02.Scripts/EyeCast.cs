@@ -59,8 +59,11 @@ public class EyeCast : MonoBehaviour
             {
                 //CircleBar 초기화
                 passedTime = 0.0f;
-                prevButton.GetComponentsInChildren<Image>()[1].fillAmount = 0.0f;
-
+                if (prevButton != null)
+                {
+                    prevButton.GetComponentsInChildren<Image>()[1].fillAmount = 0.0f;
+                }
+                
                 //현재 버튼에 PointerEnter Event
                 ExecuteEvents.Execute(currButton, data, ExecuteEvents.pointerEnterHandler);
                 //이전 버튼에 PointerExit Event
@@ -84,7 +87,7 @@ public class EyeCast : MonoBehaviour
             //CircleBar 초기화
             passedTime = 0.0f;
             prevButton.GetComponentsInChildren<Image>()[1].fillAmount = 0.0f;
-                        
+
             ExecuteEvents.Execute(prevButton, data, ExecuteEvents.pointerExitHandler);
             prevButton = null;
         }
