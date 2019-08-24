@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class EyeCast : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class EyeCast : MonoBehaviour
     private Transform camTr;
     private Image crossHair;
     private Animator anim;
+
+    private GameObject currButton;
+    private GameObject prevButton;
 
     void Start()
     {
@@ -22,15 +26,28 @@ public class EyeCast : MonoBehaviour
     {
         ray = new Ray(camTr.position, camTr.forward);
         Debug.DrawRay(ray.origin, ray.direction * 20.0f, Color.green);
-        if (Physics.Raycast(ray, out hit, 20.0f,1<<8))
+
+        if (Physics.Raycast(ray, out hit, 20.0f,1<<8 | 1<<9))
         {
             MoveLookAt.isStopped = true;
             anim.SetBool("IsLook", true);
+            GazeButton();
         }
         else
         {
             MoveLookAt.isStopped = false;
             anim.SetBool("IsLook", false);
+            ReleaseButton();
         }
+    }
+
+    void GazeButton()
+    {
+
+    }
+
+    void ReleaseButton()
+    {
+
     }
 }
