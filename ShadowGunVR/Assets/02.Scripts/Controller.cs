@@ -38,5 +38,14 @@ public class Controller : MonoBehaviour
                 cc.SimpleMove(-camTr.forward * 2.0f);
             }
         }
+
+        //텔레포트 버튼(버튼 릴리스)
+        if (OVRInput.GetUp(OVRInput.Button.PrimaryTouchpad))
+        {
+            if (Physics.Raycast(ray, out hit, 20.0f, 1<<10))
+            {
+                transform.position = hit.point;
+            }
+        }
     }
 }
