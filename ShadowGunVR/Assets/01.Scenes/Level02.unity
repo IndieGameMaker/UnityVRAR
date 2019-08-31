@@ -1143,7 +1143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfce5c22db0a40aab0583fe6a81638d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveType: 1
+  moveType: 0
   camTr: {fileID: 631548381}
   gearController: {fileID: 1189784372}
   teleportAnim: {fileID: 1958103575}

@@ -22,6 +22,7 @@ public class Controller : MonoBehaviour
     private RaycastHit hit;
     private CharacterController cc;
     private int teleportHash = Animator.StringToHash("Teleport");
+    private bool isGrabbed = false;
 
     void Start()
     {
@@ -36,13 +37,14 @@ public class Controller : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 20.0f, 1<<11))
         {
             //트리거 버튼 클릭 여부
-            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
+            if (!isGrabbed && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
             {
                 hit.transform.GetComponent<Rigidbody>().isKinematic = true;
                 hit.transform.SetParent(gearController);
+                isGrabbed = true;
             }
             //트리거 버튼 릴리스
-            if (OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger))
+            if (isGrabbed && OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger))
             {
                 hit.transform.GetComponent<Rigidbody>().isKinematic = false;
                 
@@ -50,6 +52,7 @@ public class Controller : MonoBehaviour
                 = OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RTrackedRemote);
 
                 hit.transform.SetParent(null);
+                isGrabbed = false;
             }
         }
 
