@@ -917,6 +917,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0815d116068bc4bee9a8086c8201a3cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 1189784372}
+  laser: {fileID: 1198047478}
+  range: 10
 --- !u!143 &677171755
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1260,6 +1263,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9809c5e8418bb047bf2c8ba1d1a2cec, type: 3}
+--- !u!4 &1189784372 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 488160, guid: d9809c5e8418bb047bf2c8ba1d1a2cec,
+    type: 3}
+  m_PrefabInstance: {fileID: 1189784371}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1198047477 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 112276, guid: d9809c5e8418bb047bf2c8ba1d1a2cec,
