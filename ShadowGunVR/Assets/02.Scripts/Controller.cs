@@ -30,11 +30,25 @@ public class Controller : MonoBehaviour
 
     void Update()
     {
-        //트리거 버튼 클릭 여부
-        if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
+        ray = new Ray(gearController.position, gearController.forward);
+
+        //잡기 동작
+        if (Physics.Raycast(ray, out hit, 20.0f, 1<<11))
         {
-            Debug.Log("Trigger Button Click");
+            //트리거 버튼 클릭 여부
+            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
+            {
+                hit.transform.GetComponent<Rigidbody>().isKinematic = true;
+                hit.transform.SetParent(transform);
+            }
+            //트리거 버튼 릴리스
+            if (OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger))
+            {
+                hit.transform.GetComponent<Rigidbody>().isKinematic = false;
+                hit.transform.SetParent(null);
+            }
         }
+
 
         //터치패드 터치 여부
         if (moveType == MoveType.TOUCH_PAD 
@@ -57,8 +71,6 @@ public class Controller : MonoBehaviour
         if (moveType == MoveType.TELEPORT
             && OVRInput.GetUp(OVRInput.Button.PrimaryTouchpad))
         {
-            ray = new Ray(gearController.position, gearController.forward);
-            
             if (Physics.Raycast(ray, out hit, 20.0f, 1<<10))
             {
                 teleportAnim.GetComponent<Image>().color = Color.black;
