@@ -39,7 +39,7 @@ public class Controller : MonoBehaviour
             if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
             {
                 hit.transform.GetComponent<Rigidbody>().isKinematic = true;
-                hit.transform.SetParent(transform);
+                hit.transform.SetParent(gearController);
             }
             //트리거 버튼 릴리스
             if (OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger))
