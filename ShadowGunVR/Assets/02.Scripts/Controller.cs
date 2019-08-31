@@ -45,6 +45,10 @@ public class Controller : MonoBehaviour
             if (OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger))
             {
                 hit.transform.GetComponent<Rigidbody>().isKinematic = false;
+                
+                hit.transform.GetComponent<Rigidbody>().velocity 
+                = OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RTrackedRemote);
+
                 hit.transform.SetParent(null);
             }
         }
