@@ -30,7 +30,7 @@ public class LaserPointer : MonoBehaviour
         if (Physics.Raycast(ray, out hit, range))
         {
             laser.SetPosition(1, new Vector3(0,0,hit.distance));
-            pointer.position = hit.point;
+            pointer.position = hit.point + (pointer.up * 0.02f);
             pointer.rotation = Quaternion.LookRotation(hit.normal);
         }
         else
