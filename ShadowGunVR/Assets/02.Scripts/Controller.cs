@@ -5,7 +5,11 @@ using UnityEngine;
 public class Controller : MonoBehaviour
 {
     public Transform camTr;
-    public CharacterController cc;
+    public Transform gearController;
+
+    private Ray ray;
+    private RaycastHit hit;
+    private CharacterController cc;
 
     void Start()
     {
