@@ -17,7 +17,7 @@ public class Controller : MonoBehaviour
             Debug.Log("Trigger Button Click");
         }
         //터치패드 터치 여부
-        if (OVRInput.Get(OVRInput.Button.PrimaryTouchpad))
+        if (OVRInput.Get(OVRInput.Touch.PrimaryTouchpad))
         {
             //터치패드의 좌표값
             Vector2 pos = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
