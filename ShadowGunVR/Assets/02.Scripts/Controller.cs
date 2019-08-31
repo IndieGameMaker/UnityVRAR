@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Controller : MonoBehaviour
 {
@@ -15,10 +16,12 @@ public class Controller : MonoBehaviour
 
     public Transform camTr;
     public Transform gearController;
+    public Animator teleportAnim;
 
     private Ray ray;
     private RaycastHit hit;
     private CharacterController cc;
+    private int teleportHash = Animator.StringToHash("Teleport");
 
     void Start()
     {
@@ -59,8 +62,11 @@ public class Controller : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 20.0f, 1<<10))
             {
                 Debug.Log("hit=" + hit.point);
+                teleportAnim.GetComponent<Image>().color = Color.black;
+                teleportAnim.SetTrigger(teleportHash);
                 transform.position = hit.point;
             }
         }
     }
+
 }
