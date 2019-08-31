@@ -8,7 +8,7 @@ public class LaserPointer : MonoBehaviour
     public LineRenderer laser;
     public Transform pointerPrefab;
 
-    //레이의 거리
+    //레이의 거리.
     public float range = 10.0f;
 
     private Ray ray;
