@@ -61,7 +61,6 @@ public class Controller : MonoBehaviour
             
             if (Physics.Raycast(ray, out hit, 20.0f, 1<<10))
             {
-                Debug.Log("hit=" + hit.point);
                 teleportAnim.GetComponent<Image>().color = Color.black;
                 teleportAnim.SetTrigger(teleportHash);
                 transform.position = hit.point;
