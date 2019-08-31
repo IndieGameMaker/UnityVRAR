@@ -23,6 +23,7 @@ public class Controller : MonoBehaviour
     private CharacterController cc;
     private int teleportHash = Animator.StringToHash("Teleport");
     private bool isGrabbed = false;
+    private Transform grabObject = null;
 
     void Start()
     {
@@ -41,19 +42,22 @@ public class Controller : MonoBehaviour
             {
                 hit.transform.GetComponent<Rigidbody>().isKinematic = true;
                 hit.transform.SetParent(gearController);
+                grabObject = hit.transform;
                 isGrabbed = true;
             }
-            //트리거 버튼 릴리스
-            if (isGrabbed && OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger))
-            {
-                hit.transform.GetComponent<Rigidbody>().isKinematic = false;
-                
-                hit.transform.GetComponent<Rigidbody>().velocity 
-                = OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RTrackedRemote);
+        }
 
-                hit.transform.SetParent(null);
-                isGrabbed = false;
-            }
+        //트리거 버튼 릴리스
+        if (isGrabbed && OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger))
+        {
+            grabObject.GetComponent<Rigidbody>().isKinematic = false;
+            
+            grabObject.GetComponent<Rigidbody>().velocity 
+            = OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RTrackedRemote);
+
+            grabObject.SetParent(null);
+            isGrabbed = false;
+            grabObject = null;
         }
 
 
