@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
+    //이동타입
+    public enum MoveType
+    {
+         TOUCH_PAD
+        ,TELEPORT
+    }
+
+    public MoveType moveType = MoveType.TELEPORT;
+
     public Transform camTr;
     public Transform gearController;
 
@@ -23,8 +32,10 @@ public class Controller : MonoBehaviour
         {
             Debug.Log("Trigger Button Click");
         }
+
         //터치패드 터치 여부
-        if (OVRInput.Get(OVRInput.Button.PrimaryTouchpad))
+        if (moveType == MoveType.TOUCH_PAD 
+            && OVRInput.Get(OVRInput.Button.PrimaryTouchpad))
         {
             //터치패드의 좌표값
             Vector2 pos = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
@@ -40,10 +51,14 @@ public class Controller : MonoBehaviour
         }
 
         //텔레포트 버튼(버튼 릴리스)
-        if (OVRInput.GetUp(OVRInput.Button.PrimaryTouchpad))
+        if (moveType == MoveType.TELEPORT
+            && OVRInput.GetUp(OVRInput.Button.PrimaryTouchpad))
         {
+            ray = new Ray(gearController.position, gearController.forward);
+            
             if (Physics.Raycast(ray, out hit, 20.0f, 1<<10))
             {
+                Debug.Log("hit=" + hit.point);
                 transform.position = hit.point;
             }
         }
