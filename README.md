@@ -6,4 +6,4 @@
 
 [Vuforia 강의소스](https://github.com/IndieGameMaker/VuforiaDemo)
 
-[Dron 3D 모델](https://github.com/IndieGameMaker/UnityVRAR/drone.fbx)
+[Dron 3D 모델](https://github.com/IndieGameMaker/UnityVRAR/raw/master/drone.fbx)
