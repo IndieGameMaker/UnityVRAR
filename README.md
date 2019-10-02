@@ -4,6 +4,6 @@
 
 [Vive 강의소스](https://github.com/IndieGameMaker/ViveLecture)
 
-[Vuforia 강의소스](https://github.com/IndieGameMaker/VuforiaDemo)
+[Vuforia 강의소스](https://github.com/IndieGameMaker/VuforiaDemo)
 
 [Dron 3D 모델](https://github.com/IndieGameMaker/UnityVRAR/drone.fbx)
